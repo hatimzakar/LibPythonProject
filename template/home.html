@@ -1,0 +1,29 @@
+
+
+<html>
+{% block content %}
+
+
+<head>
+
+    <title>Home</title>
+</head>
+<body>
+<h1>My first name is {{ first_name }}. My last name is {{ last_name }}.</h1>
+
+
+    <form action="add">
+
+       <label>Number 1</label> <input type="text" name="val1">
+       <label>Number 2</label> <input type="text" name="val2">
+        <input type="submit" name="submit">
+    </form>
+
+{% endblock %}
+
+
+</body>
+
+
+
+</html>

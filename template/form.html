@@ -1,0 +1,14 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+    <form action="add">
+
+       <label>Number 1</label> <input type="text" name="val1">
+       <label>Number 2</label> <input type="text" name="val2">
+        <input type="submit" name="submit">
+    </form>
+
+{% endblock %}
+
+    <label>Result : {result}</label>

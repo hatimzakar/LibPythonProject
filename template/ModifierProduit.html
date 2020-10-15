@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static  %}
+<html lang="en">
+<head>
+	<title>Login V16</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{% static  'Login_v16/images/icons/favicon.ico'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/vendor/bootstrap/css/bootstrap.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/fonts/font-awesome-4.7.0/css/font-awesome.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/fonts/Linearicons-Free-v1.0.0/icon-font.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/vendor/animate/animate.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/vendor/css-hamburgers/hamburgers.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/vendor/animsition/css/animsition.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/vendor/select2/select2.min.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/vendor/daterangepicker/daterangepicker.css'%}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/css/util.css'%}">
+	<link rel="stylesheet" type="text/css" href="{% static  'Login_v16/css/main.css'%}">
+<!--===============================================================================================-->
+</head>
+<body>
+
+ <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="/"><label style=" text-color: white ;font-family: 'Times New Roman';  font-size: 20px; font-weight: revert;">Acceuil</label></a>
+
+
+
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+      <li class="nav-item ">
+        <a class="nav-link" href="/library/AfficherProduit"><label style="text-decoration-color: #fefefe;font-family: 'Times New Roman';  font-size: 20px; font-weight: revert;">Gerer Produits</label></a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/library/AjouterProduit"><label style="font-family: 'Times New Roman';  font-size: 20px; font-weight: revert;">Ajouter Produit</label></a>
+      </li>
+
+           <li class="nav-item">
+        <a class="nav-link" href="/library/AfficherFacture"><label style="font-family: 'Times New Roman';  font-size: 20px; font-weight: revert;">Gerer  Factures </label></a>
+      </li>
+           <li class="nav-item">
+        <a class="nav-link" href="/library/AjouterFacture"><label style="font-family: 'Times New Roman';  font-size: 20px; font-weight: revert;">Ajouter Facture</label></a>
+      </li>
+
+    </ul>
+       <a class="btn btn-sm btn-danger pull-right" href="/register/logout"><label style=" color:white;font-family: 'Times New Roman'; ">Deconnexion</label></a>
+  </div>
+</nav>
+
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('../static/Login_v16/images/bg-01.jpg');">
+			<div class="wrap-login100 p-t-30 p-b-50">
+				<span class="login100-form-title p-b-41">
+				Modifier Produit
+				</span>
+				<form class="login100-form validate-form p-b-33 p-t-5" action="{% url 'Update' produit.id%}" method="POST">
+                    {% csrf_token %}
+
+                      <input type="hidden" name="id" value="{{produit.id}}">
+
+					<div class="wrap-input100 validate-input" data-validate = "Numero">
+
+						<input class="input100" type="text" name="numero" placeholder="Numero" value="{{ produit.numero }}">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Designation">
+
+						<input class="input100" type="text" name="designation" placeholder="Designiation" value="{{produit.designation}}">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Enter username">
+
+						<input class="input100" type="text" name="prix" placeholder="Prix" value="{{ produit.prix}}">
+						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Quanitite">
+
+						<input class="input100" type="text" name="quantite" placeholder="Quanitte" value="{{produit.quantite}}">
+						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
+					</div>
+
+					<div class="container-login100-form-btn m-t-32">
+						<button class="login100-form-btn">
+							Modifier
+						</button>
+					</div>
+
+
+
+
+				</form>
+			</div>
+		</div>
+
+	</div>
+
+
+	<div id="dropDownSelect1"></div>
+
+    <div>
+         {% for message in messages %}
+                    <span class="focus-input100" data-placeholder="&#xe80f;">{{message}}</span>
+
+            <h2>{{message}}</h2>
+               {% endfor  %}
+
+    </div>
+
+<!--===============================================================================================-->
+	<script src="../static/Login_v16/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/Login_v16/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/Login_v16/vendor/bootstrap/js/popper.js"></script>
+	<script src="../static/Login_v16/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/Login_v16/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/Login_v16/vendor/daterangepicker/moment.min.js"></script>
+	<script src="../static/Login_v16/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/Login_v16/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="../static/Login_v16/js/main.js"></script>
+
+</body>
+</html>
